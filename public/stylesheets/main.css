@@ -3,6 +3,7 @@
 @import 'shared/header.css';
 @import 'shared/buttons.css';
 @import 'shared/forms.css';
+@import 'shared/authors.css';
 
 
 :root {
@@ -32,4 +33,8 @@ body{
 .page-header{
     font-size: 2rem;
     font-weight: 500;
+}
+
+.error-msg{
+    color: rgb(215, 17, 17)
 }

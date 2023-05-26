@@ -58,8 +58,9 @@ router.post("/",/*upload.single('cover')*/ async (req,res)=>{
         pageCount: req.body.pageCount,
         //coverImageName: fileName
     })
-    saveCover(book,req.body.cover)
+    
     try{
+        saveCover(book,req.body.cover)
         const newBook = await book.save()
         res.redirect(`/books/${newBook.id}`)
     }
@@ -152,10 +153,10 @@ async function renderFormPage(res,book,form,hasError = false){
         const authors = await Author.find({})
         const params = {book:book , authors:authors}
         if (hasError){
-            if(form==='new'){
-                params.errorMessage = 'Error Creating book'
-            }else{
+            if(form==='edit'){
                 params.errorMessage = 'Error Editing book'
+            }else{
+                params.errorMessage = 'Error Creating book'
             }
         } 
         res.render(`books/${form}`,params)
